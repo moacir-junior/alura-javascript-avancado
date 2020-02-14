@@ -4,6 +4,7 @@ class Negociacao{
         this._data = new Date(data.getTime());
         this._quantidade = quantidade;
         this._valor = valor;
+        this._volume = this.calcularVolume();
         Object.freeze(this);
     }
 
@@ -21,5 +22,9 @@ class Negociacao{
 
     get valor(){
         return this._valor;
+    }
+
+    get volume(){
+        return this._volume;
     }
 }

@@ -11,6 +11,8 @@
     
     <h1 class="text-center">Negociações</h1>
     
+    <div id="mensagem-view"></div>
+
     <form class="form" onsubmit="negociacaoController.adicionar(event)">
         
         <div class="form-group">
@@ -35,19 +37,25 @@
         <button class="btn btn-primary text-center" type="button">
             Importar Negociações
         </button>
-        <button class="btn btn-primary text-center" type="button">
+        <button class="btn btn-primary text-center" type="button" onclick="negociacaoController.apagar()">
             Apagar
         </button>
     </div> 
     <br>
     <br>
+
+    <div id="negociacoes-view"></div>
     
     <script src="js/app/models/negociacao.js"></script>
     <script src="js/app/controllers/negociacao-controller.js"></script>
     <script src="js/app/helpers/date-helper.js"></script>
     <script src="js/app/models/lista-negociacoes.js"></script>
+    <script src="js/app/models/mensagem.js"></script>
+    <script src="js/app/views/view.js"></script>
     <script src="js/app/views/negociacao-view.js"></script>
-
+    <script src="js/app/views/mensagem-view.js"></script>
+    <script src="js/app/services/proxy-factory.js"></script>
+    <script src="js/app/helpers/bind.js"></script>
     <script>
         let negociacaoController = new NegociacaoController();
     </script>
