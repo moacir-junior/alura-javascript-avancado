@@ -18,6 +18,17 @@ class NegociacaoController{
         this._limpaFormulario();
     }
 
+    importarNegociacoes(){
+        let service = new NegociacaoService();
+
+        let promise = Promise.all(Array(service.obterNegociacoesSemana(), service.obterNegociacoesSemanaAnterior(), service.obterNegociacoesSemanaRetrasada()));
+        promise.then(negociacoes => {
+            negociacoes.reduce((vetorAchatado, vetor) => vetorAchatado.concat(vetor), Array()).forEach(negociacao => this._listaNegociacoes.adicionar(negociacao));
+            this._mensagem.texto = 'Negociações importadas com sucesso.';
+        });
+        promise.catch(erro => this._mensagem.texto = erro);
+    }
+
     apagar(){
         this._listaNegociacoes.esvazia();
         this._mensagem.texto = 'Lista de negociações apagada.';

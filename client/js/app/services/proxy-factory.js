@@ -1,10 +1,10 @@
 class ProxyFactory{
+
     static create(objeto, propriedades, acao){
         return new Proxy(objeto, {
             get(target, prop, receiver){
                 if(propriedades.includes(prop) && ProxyFactory._testarFuncao(target[prop])){
                     return function(){
-                        console.log(`interceptado ${prop}`)
                         Reflect.apply(target[prop], target, arguments);
                         return acao(target);
                     }
